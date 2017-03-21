@@ -51,7 +51,18 @@ var languageStrings = {
     }
 };
 
+// Create default handlers
+var newSessionHandlers = {
+    'LaunchRequest': function () {
+        //Skill was launched
+
+        //Say Hello!
+        this.emit(':tell', "Hello NAME");
+    }
+};
+
 var main = function (event) {
+    alexaSDK.registerHandlers(newSessionHandlers);
     console.log('ALEXA Event', event.request.type + '!');
 
     API_KEY = event.analytics_api_key;
